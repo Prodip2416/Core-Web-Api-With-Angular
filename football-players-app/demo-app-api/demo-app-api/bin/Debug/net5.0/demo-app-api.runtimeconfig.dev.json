@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\ProdipSarker\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\ProdipSarker\\.nuget\\packages"
+    ]
+  }
+}

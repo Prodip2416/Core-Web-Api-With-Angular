@@ -1,0 +1,73 @@
+<div class="container">
+    <br />
+    <div class="row">
+      <div class="col">
+        <h3>Create Player</h3>
+      </div>
+      <div class="col text-right">
+        <a href="#" routerLink="/players/list" class="btn btn-secondary btn-sm">Back To Players List</a>
+      </div>
+    </div>
+    <br />
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit(createForm)">
+        
+      <div class="form-group">
+        <label for="shirtNo">Shirt No:</label>
+        <input formControlName="shirtNo"
+               id="shirtNo"
+               type="text"
+               class="form-control" />
+      </div>
+      <div *ngIf="f.shirtNo.touched && f.shirtNo.invalid" class="alert alert-danger">
+        <div *ngIf="f.shirtNo.errors.required">Shirt No is required.</div>
+        <div *ngIf="f.shirtNo.errors.pattern">Enter only number.</div>
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input formControlName="name"
+               id="name"
+               type="text"
+               class="form-control" />
+      </div>
+      <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+        <div *ngIf="f.name.errors.required">Name is required.</div>
+      </div>
+      <div class="form-group">
+        <label for="name">Position:</label>
+        <select formControlName="positionId"
+                id="positionId"
+                class="form-control">
+          <option value="">- Select -</option>
+          <option *ngFor="let position of positions" [ngValue]="position.id">
+            {{position.name}}
+          </option>
+        </select>
+      </div>
+   
+      <div class="form-group">
+        <label for="appearances">Appearances:</label>
+        <input formControlName="appearances"
+               id="appearances"
+               type="text"
+               class="form-control" />
+      </div>
+      <div *ngIf="f.appearances.touched && f.appearances.invalid" class="alert alert-danger">
+        <div *ngIf="f.appearances.errors.required">Appearances is required.</div>
+        <div *ngIf="f.appearances.errors.pattern">Enter only number.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="goals">Goals:</label>
+        <input formControlName="goals"
+               id="goals"
+               type="text"
+               class="form-control" />
+      </div>
+      <div *ngIf="f.goals.touched && f.goals.invalid" class="alert alert-danger">
+        <div *ngIf="f.goals.errors.required">Goal is required.</div>
+        <div *ngIf="f.goals.errors.pattern">Enter only number.</div>
+      </div>
+      
+      <button class="btn btn-primary" type="submit" [disabled]="!createForm.valid">Create</button>
+    </form>
+  </div>

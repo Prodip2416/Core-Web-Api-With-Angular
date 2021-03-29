@@ -1,0 +1,32 @@
+<div class="container">
+    <br />
+    <div class="row">
+      <div class="col">
+        <h3 class="text-warning">Player Details</h3>
+      </div>
+    </div><br/>
+    <div class="row">
+      <div class="col">
+        <input type="text" [(ngModel)]="playerName" placeholder="Player Name"  >
+        <button class="btn btn-warning m-2" (click)="searchByName()">Search</button>
+        <button (click)="downloadFile()" class="btn btn-warning m-2">Download Excel</button>
+      </div>
+    </div>
+    <br />
+    <table id="excel-table" class="table table-bordered table-sm" style="text-align: center;">
+      <tr >
+        <th>Shirt No</th>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Appearances</th>
+        <th>Goals</th>    
+      </tr>
+      <tr *ngFor="let player of playersDetail">
+        <td>{{ player.shirtNo }}</td>
+        <td>{{ player.name }}</td>
+        <td>{{ player.positionName }}</td>
+        <td>{{ player.appearances }}</td>
+        <td>{{ player.goals }}</td>     
+      </tr>
+    </table>
+  </div>

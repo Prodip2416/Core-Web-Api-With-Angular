@@ -1,0 +1,56 @@
+<header>
+    <nav
+      class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3"
+    >
+      <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']">Players Info App</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target=".navbar-collapse"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        >
+          <ul *ngIf="accountService.currentUser$ | async" class="navbar-nav flex-grow">
+            <li class="nav-item"
+                [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/players']">Players</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/reports']">Reports</a>
+            </li>
+            <li class="nav-item cursor" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" (click)="logout()">Logout</a>
+            </li>
+           
+          </ul>
+
+          <form *ngIf="(accountService.currentUser$ | async) === null" class="d-flex" #loginForm="ngForm" (ngSubmit) = "login()" autocomplete="off">
+            <input 
+            name="username"
+            [(ngModel)] = "model.username"
+            class="form-control mr-2"
+             type="text"
+              placeholder="Username" >
+            <input    
+            name="password"
+            [(ngModel)] ="model.password"
+            class="form-control mr-2"
+            type="password" 
+            placeholder="Password" >
+            <button class="btn btn-success" type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
